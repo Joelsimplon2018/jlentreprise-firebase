@@ -1,0 +1,25 @@
+<main class="main-class">
+  <form [formGroup]="loginForm" class="product-form" action="" enctype="multipart/form-data">
+
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input class="" type="text" formControlName="email" id="email" required value="email" required>
+      <span *ngIf="isValid('email')">Veuillez saisir votre email</span>
+    </div>
+
+    <div class="form-control">
+      <label for="name">Mot de passe</label>
+      <input class="" type="password" formControlName="password" id="password" value="password" required>
+      <span *ngIf="isValid('password')">Veuillez saisir votre mot de passe</span>
+    </div>
+
+
+    <input type="hidden" name="_csrf" value="">
+    <button class="btn" (click)="login()">Connexion</button><br>
+    <button class="btnnn" (click)="GoogleSignIn()">Avec Google</button>
+    <button class="btnnn" (click)="FacebookeSignIn()">Avec Facebook</button>
+  </form>
+  <div class="MessageRegister">
+    {{successMessage}}
+  </div>
+</main>

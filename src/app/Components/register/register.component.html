@@ -1,0 +1,30 @@
+<main class="main-class">
+  <form [formGroup]="myForm" class="product-form" (ngSubmit)="register()">
+
+
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input class="" type="text" formControlName="email" id="email">
+
+    </div>
+
+    <div class="form-control">
+      <label for="name">Mot de passe</label>
+      <input class="" type="password" formControlName="password" id="password">
+
+    </div>
+
+    <div class="form-control">
+      <label for="name">Confirmerr mot de passe</label>
+      <input class="" type="password" formControlName="confirm" id="confirm">
+
+    </div>
+
+
+    <input type="hidden" name="_csrf" value="">
+    <button class="btn" type="submit" [disabled]="myForm.invalid">Create un compte</button> <br>
+
+
+  </form>
+  <p class="text-danger">{{ errorMessage }}</p>
+</main>

@@ -1,0 +1,38 @@
+<main>
+
+  <div class="grid" *ngFor="let p of prestataire">
+
+    <article class="card product-item">
+      <header class="card__header">
+        <h1 class="product__title">
+          {{p.name}}
+        </h1>
+      </header>
+      <div class="card__image">
+        <img src="../../../assets/images/{{p.imageUrl}}" alt="">
+      </div>
+      <div class="card__content">
+        <h2 class="product__price">
+          Tarif : {{p.tarif}}€ / jour
+        </h2>
+        <p class="product__description">
+          Ville : {{p.city}}
+        </p>
+      </div>
+      <div class="card__content">
+        <h2 class="product__price">
+
+          {{p.title}}</h2>
+
+      </div>
+      <div class="card__actions">
+        <a href="/prestataire/{{p.id}}" class="btn">Details</a>
+
+
+      </div>
+
+    </article>
+
+  </div>
+
+</main>

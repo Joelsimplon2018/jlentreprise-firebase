@@ -1,0 +1,22 @@
+<div *ngIf="prestataires">
+
+  <img src="../../../assets/images/{{prestataires.imageUrl}}" alt="image">
+
+  <div class="coordoneesPrestaaire">
+    <p>{{prestataires.title}}</p>
+    <p>{{prestataires.name}}</p>
+    <p>{{prestataires.city}}</p>
+    <p>{{prestataires.email}}</p>
+    <p>{{prestataires.telephone}}</p>
+    <p>{{prestataires.experience}}</p>
+    <p>{{prestataires.tarif}}</p>
+  </div>
+
+  <div class="core_prestat1">
+    <p>
+      Competence :
+      {{prestataires.competences}}
+    </p>
+  </div>
+  <button class="button-mission">proposer une mission</button>
+</div>

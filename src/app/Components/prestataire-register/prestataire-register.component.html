@@ -1,0 +1,72 @@
+<main class="main-class">
+  <form [formGroup]="myForm" class="product-form" action="" enctype="multipart/form-data"
+    (submit)="RegisterNewPresta()">
+
+    <div class="form-control">
+      <label for="title">Titre</label>
+      <input class="" type="text" formControlName="title" id="title" required value="title">
+      <span *ngIf="isValid('title')">Veuillez saisir votre Titre</span>
+    </div>
+
+
+    <div class="form-control">
+      <label for="name">Nom</label>
+      <input class="" type="text" formControlName="name" id="name" value="name" required>
+      <span *ngIf="isValid('name')">Veuillez saisir votre Nom</span>
+    </div>
+
+    <div class="form-control">
+      <label for="imageUrl">Image</label>
+      <input type="file" formControlName="imageUrl" id="imageUrl" value="imageUrl" required>
+      <span *ngIf="isValid('imageUrl')">Veuillez saisir une image</span>
+    </div>
+
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input class="" type="text" formControlName="email" id="email" value="email" required>
+      <span *ngIf="isValid('email')">Veuillez saisir votre adress mail</span>
+    </div>
+
+    <div class="form-control">
+      <label for="city">Ville</label>
+      <input class="" type="text" formControlName="city" id="city" value="city" required>
+      <span *ngIf="isValid('city')">Veuillez saisir votre ville</span>
+    </div>
+
+    <div class="form-control">
+      <label for="competences">Votre Competences</label>
+      <textarea class="" formControlName="competences" id="competences" rows="5" value="competences"
+        required></textarea>
+      <span *ngIf="isValid('competences')">Veuillez saisir vos competences</span>
+    </div>
+
+    <div class="form-control">
+      <label for="experience">Votre Experience</label>
+      <textarea class="" formControlName="experience" id="experience" rows="5" value="experience" required></textarea>
+      <span *ngIf="isValid('experience')">Veuillez saisir votre experience</span>
+    </div>
+    <div class="form-control">
+      <label for="marielles">Vos matériels </label>
+      <textarea class="" formControlName="marielles" id="marielles" rows="5" value="marielles" required></textarea>
+      <span *ngIf="isValid('marielles')">Veuillez saisir le matériels que vous utilisez</span>
+    </div>
+
+
+    <div class="form-control">
+      <label for="tarif">Tarif</label>
+      <input class="" type="number" formControlName="tarif" id="tarif" value="tarif">
+      <span *ngIf="isValid('tarif')">Veuillez saisir votre Tarif</span>
+    </div>
+
+    <div class="form-control">
+      <label for="telephone">Telephone</label>
+      <input class="" type="number" formControlName="telephone" id="telephone" value="telephone">
+      <span *ngIf="isValid('telephone')">Veuillez saisir votre numero de telephone</span>
+    </div>
+    <input type="hidden" name="_csrf" value="">
+    <button class="btn" type="submit">Create profile</button>
+  </form>
+  <div class="MessageRegister">
+    {{successMessage}}
+  </div>
+</main>
