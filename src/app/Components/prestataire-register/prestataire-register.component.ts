@@ -2,8 +2,9 @@ import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute, Router } from "@angular/router"
 import { DomSanitizer } from "@angular/platform-browser"
 import { HttpClient } from "@angular/common/http"
-
-import { FormControl, Validators, FormGroupDirective, NgForm, FormGroup } from "@angular/forms"
+import { PrestatService } from "../../services/prestat.service"
+import { Prestataires } from "../../models/prestataire.model"
+import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder, FormGroup } from "@angular/forms"
 
 @Component({
   selector: "app-prestataire-register",
@@ -14,30 +15,58 @@ export class PrestataireRegisterComponent implements OnInit {
   fileData: File = null
   name = new FormControl("")
   myForm: FormGroup
-  successMessage: String = ""
-  emailFormControl = new FormControl("", [Validators.required, Validators.email])
+  prestataires: Prestataires[] = []
 
-  constructor(private http: HttpClient, private router: Router, private ActivatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer) {
-    this.myForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      name: new FormControl(null, Validators.required),
-      imageUrl: new FormControl(null, Validators.required),
-      email: new FormControl(null, Validators.required),
-      city: new FormControl(null, Validators.required),
-      competences: new FormControl(null, Validators.required),
-      experience: new FormControl(null, Validators.required),
-      marielles: new FormControl(null, Validators.required),
-      tarif: new FormControl(null, Validators.required),
+  fileIsUploading = false
+  fileUrl: string
+  fileUploaded = false
 
-      telephone: new FormControl(1824255, Validators.required)
+  photoUploading = false
+  photoUploaded = false
+  photosAdded: any[] = []
+  indexToUpdate
+  editMode = false
+
+  constructor(private http: HttpClient, private router: Router, private ActivatedRoute: ActivatedRoute, private domSanitizer: DomSanitizer, private formBuilder: FormBuilder, private prestatService: PrestatService) {}
+  initSigninForm() {
+    this.myForm = this.formBuilder.group({
+      title: ["", [Validators.required]],
+      name: ["", [Validators.required]],
+      photo: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      ville: ["", [Validators.required]],
+      experience: ["", [Validators.required]],
+      competences: ["", [Validators.required]],
+      materielles: ["", [Validators.required]],
+      tarif: ["", [Validators.required]],
+      telephone: ["", [Validators.required]]
     })
   }
 
-  RegisterNewPresta() {}
+  ngOnInit() {
+    this.initSigninForm()
+    this.prestatService.prestatairesSubject.subscribe((data: Prestataires[]) => {
+      this.prestataires = data
+    })
+    this.prestatService.getPrestataires()
+    this.prestatService.emitPrestataires()
+  }
+
+  RegisterNewPresta() {
+    const newPrestatire: Prestataires = this.myForm.value
+
+    // if(this.fileUrl && this.fileUrl !== ""){
+    //    newPrestatires.photo = this.fileUrl;
+    // }
+
+    if (this.editMode) {
+      this.prestatService.updatePrestataire(newPrestatire, this.indexToUpdate)
+    } else {
+      this.prestatService.createPrestataire(newPrestatire)
+    }
+  }
 
   isValid(controlName) {
     return this.myForm.get(controlName).invalid && this.myForm.get(controlName).touched
   }
-
-  ngOnInit() {}
 }
