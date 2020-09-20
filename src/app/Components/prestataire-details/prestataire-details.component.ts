@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Observable } from "rxjs"
 import { Prestataires } from "../../models/prestataire.model"
+import { PrestatService } from "../../services/prestat.service"
 
 @Component({
   selector: "app-prestataire-details",
@@ -14,7 +15,15 @@ export class PrestataireDetailsComponent implements OnInit {
   prestataire: Prestataires
   prestataires: Prestataires[]
   id
-  constructor(public http: HttpClient, private ActivatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(private ActivatedRoute: ActivatedRoute, private route: ActivatedRoute, private router: Router, private prestatService: PrestatService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const id = this.route.snapshot.params["id"]
+    this.prestatService.getSinglePrestataire(+id).then((prestataire: Prestataires) => {
+      this.prestataire = prestataire
+    })
+  }
+  onBack() {
+    this.router.navigate(["/"])
+  }
 }

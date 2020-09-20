@@ -1,1 +1,56 @@
-<p>mission-form works!</p>
+<main class="main-class">
+  <form [formGroup]="myForm" class="product-form" action="" enctype="multipart/form-data" (submit)="SendMission()">
+
+    <div class="form-control">
+      <label for="title">Titre</label>
+      <input class="" type="text" formControlName="title" id="title" required value="title">
+      <span *ngIf="isValid('title')">Veuillez saisir votre Titre</span>
+    </div>
+
+
+    <div class="form-control">
+      <label for="date">Date</label>
+      <input class="" type="date" formControlName="date" id="name" value="date" required>
+      <span *ngIf="isValid('date')">Veuillez saisir la date</span>
+    </div>
+
+    <div class="form-control">
+      <label for="description">Description</label>
+      <textarea class="" formControlName="description" id="description" rows="5" value="competences"
+        required></textarea>
+      <span *ngIf="isValid('description')">Veuillez descrire la mission </span>
+    </div>
+
+
+    <div class="form-control">
+      <label for="type_prestations">Type de prestation</label>
+      <textarea class="" formControlName="type_prestations" id="type_prestations" rows="5" value="competences"
+        required></textarea>
+      <span *ngIf="isValid('description')">Veuillez saisir type de prestation </span>
+    </div>
+
+    <div class="form-control">
+      <label for="email">Email</label>
+      <input class="" type="text" formControlName="email" id="email" value="email" required>
+      <span *ngIf="isValid('email')">Veuillez saisir votre adress mail</span>
+    </div>
+
+    <div class="form-control">
+      <label for="adress">Adress</label>
+      <input class="" type="text" formControlName="adress" id="adress" value="adress" required>
+      <span *ngIf="isValid('adress')">Veuillez saisir votre adress</span>
+    </div>
+
+
+    <div class="form-control">
+      <label for="telephone">Telephone</label>
+      <input class="" type="number" formControlName="telephone" id="telephone" value="telephone">
+      <span *ngIf="isValid('telephone')">Veuillez saisir votre numero de telephone</span>
+    </div>
+    <input type="hidden" name="_csrf" value="">
+    <button class="btn" type="submit">Envoyer</button>
+  </form>
+  <div class="MessageRegister">
+    {{successMessage}}
+  </div>
+</main>

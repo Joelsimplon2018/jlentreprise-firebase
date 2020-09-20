@@ -1,22 +1,38 @@
-<div *ngIf="prestataires">
+<div *ngIf="prestataire">
 
-  <img src="../../../assets/images/{{prestataires.imageUrl}}" alt="image">
+  <img src="{{prestataire.photo}}" alt="image">
 
   <div class="coordoneesPrestaaire">
-    <p>{{prestataires.title}}</p>
-    <p>{{prestataires.name}}</p>
-    <p>{{prestataires.city}}</p>
-    <p>{{prestataires.email}}</p>
-    <p>{{prestataires.telephone}}</p>
-    <p>{{prestataires.experience}}</p>
-    <p>{{prestataires.tarif}}</p>
+
+    <div>
+      <h2> {{prestataire.title}}</h2>
+
+    </div>
+
+    <p>{{prestataire.name}}</p>
+    <p>{{prestataire.ville}}</p>
+    <p>{{prestataire.email}}</p>
+    <p>{{prestataire.telephone}}</p>
+    <div>
+      <h3>Experience</h3>
+      <p>
+
+        {{prestataire.experience}}
+      </p>
+    </div>
+    <!-- <p>Tarif : {{prestataire.tarif}} €</p> -->
   </div>
 
   <div class="core_prestat1">
-    <p>
-      Competence :
-      {{prestataires.competences}}
-    </p>
+
+
   </div>
-  <button class="button-mission">proposer une mission</button>
+
+  <button class="button-mission" routerLink="mission" routerLinkActive="prestataire.name">Proposer une
+    mission</button>
+
+  <button class="btn btn-default" (click)="onBack()">Retour</button>
+
+
+
 </div>

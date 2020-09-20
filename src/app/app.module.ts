@@ -18,10 +18,11 @@ import { FooterComponent } from "./Components/footer/footer.component"
 import { AuthService } from "./services/auth.service"
 import { PrestatService } from "./services/prestat.service"
 import { MissionService } from "./services/mission.service"
+import { AuthGuard } from "./security/auth.guard"
 @NgModule({
   declarations: [AppComponent, RegisterComponent, LoginComponent, ContactComponent, PrestataireListComponent, PrestataireDetailsComponent, PrestataireRegisterComponent, PrestataireProfilComponent, MissionFormComponent, MissionListComponent, HeaderComponent, FooterComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
-  providers: [AuthService, PrestatService, MissionService],
+  providers: [AuthService, PrestatService, MissionService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
