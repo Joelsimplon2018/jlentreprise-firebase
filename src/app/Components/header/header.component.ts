@@ -4,6 +4,7 @@ import { AuthService } from "../../services/auth.service"
 import { ActivatedRoute, Router } from "@angular/router"
 import { FormControl, AbstractControl, FormGroup, Validators, FormGroupDirective, NgForm } from "@angular/forms"
 import { HttpClient } from "@angular/common/http"
+
 import { Observable } from "rxjs"
 
 @Component({
@@ -12,7 +13,7 @@ import { Observable } from "rxjs"
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  userName: string = ""
+  user: firebase.User
   isAuth: boolean
   isLoggedIn$: Observable<Boolean>
   isLoggedOut$: Observable<Boolean>
@@ -27,5 +28,8 @@ export class HeaderComponent implements OnInit {
         this.isAuth = false
       }
     })
+  }
+  onSignOut() {
+    this.AuthService.signOutUser()
   }
 }

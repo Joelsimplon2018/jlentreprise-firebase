@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core"
+import { Component, OnInit, OnDestroy } from "@angular/core"
 import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http"
 import { ActivatedRoute, Router } from "@angular/router"
 import { Prestataires } from "../../models/prestataire.model"
@@ -10,7 +10,7 @@ import { Subscription } from "rxjs"
   templateUrl: "./prestataire-list.component.html",
   styleUrls: ["./prestataire-list.component.css"]
 })
-export class PrestataireListComponent implements OnInit {
+export class PrestataireListComponent implements OnInit, OnDestroy {
   prestataire
   prestataires: Prestataires[]
 
@@ -25,8 +25,8 @@ export class PrestataireListComponent implements OnInit {
     this.prestatService.emitPrestataires()
   }
 
-  onDeletePrestataire(Prestataires: Prestataires) {
-    this.prestatService.removePrestataire(Prestataires)
+  onDeletePrestataire(prestataires: Prestataires) {
+    this.prestatService.removePrestataire(prestataires)
   }
 
   onViewPrestataire(id: number) {

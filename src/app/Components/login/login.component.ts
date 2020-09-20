@@ -15,7 +15,7 @@ import * as firebase from "firebase"
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
-  successMessage: String = ""
+  errorMessage: string
   isLoading = false
   private pass: string
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/"])
       })
       .catch(error => {
-        console.log(error)
+        this.errorMessage = error
       })
   }
   GoogleSignIn() {

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jl-entreprise": {
+      "hosting": {
+        "y": [
+          "jl-entreprise"
+        ]
+      }
+    }
+  }
+}

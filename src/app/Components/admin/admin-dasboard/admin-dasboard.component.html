@@ -1,0 +1,77 @@
+<main>
+  <div class="list-prestataire">
+    <h1 style="font-size: 40px">List des prestataires</h1>
+  </div>
+  <div class="grid" *ngFor="let presta of prestataires; let i = index" (click)="onViewPrestataire(i)">
+
+    <article class="card product-item">
+
+      <header class="card__header">
+        <h1 class="product__title">
+          {{presta.name}}
+        </h1>
+      </header>
+      <div class="card__image">
+        <img [src]="presta.photo " class="card-img-top">
+      </div>
+      <div class="card__content">
+        <h2 class="product__price">
+          Tarif : {{presta.tarif}}€ / jour
+        </h2>
+        <p class="product__description">
+          Ville : {{presta.ville}}
+        </p>
+      </div>
+      <div class="card__content">
+        <h2 class="product__price">
+
+          {{presta.title}}</h2>
+
+      </div>
+      <div class="card__actions">
+        <button (click)="onDeletePrestataire(presta.id)">Delete</button>
+
+        <a [routerLink]="['/prestataire/edit, i']">Edit</a>
+
+
+      </div>
+
+    </article>
+
+  </div>
+
+</main>
+
+<main>
+  <div class="list-user">
+    <h1 style="font-size: 40px">List des Utilisateurs</h1>
+  </div>
+  <div class="grid2" *ngFor="let u of user">
+
+    <article class="card product-item">
+
+      <header class="card__header">
+        <h1 class="product__title">
+          {{u.username}}
+        </h1>
+      </header>
+
+      <div class="card__content">
+        <h2 class="product__price">
+          {{u.email}}
+        </h2>
+
+      </div>
+
+      <div class="card__actions">
+        <button (click)="OnDelete(u.id)">Delete</button>
+        <a [routerLink]="['/editUser']">Edit</a>
+
+
+      </div>
+
+    </article>
+
+  </div>
+
+</main>

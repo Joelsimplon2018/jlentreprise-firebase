@@ -19,8 +19,11 @@ import { AuthService } from "./services/auth.service"
 import { PrestatService } from "./services/prestat.service"
 import { MissionService } from "./services/mission.service"
 import { AuthGuard } from "./security/auth.guard"
+import { AdminDasboardComponent } from "./Components/admin/admin-dasboard/admin-dasboard.component"
+import { EditComponent } from "./Components/admin/edit/edit.component"
+
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, LoginComponent, ContactComponent, PrestataireListComponent, PrestataireDetailsComponent, PrestataireRegisterComponent, PrestataireProfilComponent, MissionFormComponent, MissionListComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, RegisterComponent, LoginComponent, ContactComponent, PrestataireListComponent, PrestataireDetailsComponent, PrestataireRegisterComponent, PrestataireProfilComponent, MissionFormComponent, MissionListComponent, HeaderComponent, FooterComponent, AdminDasboardComponent, EditComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [AuthService, PrestatService, MissionService, AuthGuard],
   bootstrap: [AppComponent]
