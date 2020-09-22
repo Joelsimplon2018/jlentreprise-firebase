@@ -1,5 +1,6 @@
 <main class="main-class">
-  <form [formGroup]="myForm" class="product-form" action="" enctype="multipart/form-data"
+
+  <form [formGroup]="myForm" class="product-form" method="POST" enctype="multipart/form-data"
     (submit)="RegisterNewPresta()">
 
     <div class="form-control">
@@ -16,10 +17,24 @@
     </div>
 
     <div class="form-control">
-      <label for="imageUrl">Image</label>
-      <input type="file" formControlName="imageUrl" id="imageUrl" value="imageUrl" required>
-      <span *ngIf="isValid('imageUrl')">Veuillez saisir une image</span>
+
+      <button ype="button">
+        <!-- <input type="file" #filePicker (change)="onUploadFile($event)" formControlName="photo" id="imageUrl"
+          value="photo" required> -->
+
+        <input type="file" (change)="detectFiles($event)" formControlName="photo" id="imageUrl" value="photo" required
+          accept="image/*">
+        <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+      </button>
+
+      <span *ngIf="isValid('photo')">Veuillez saisir une image</span>
     </div>
+    <div class="spinner-border text-primary" *ngIf="photoUploading" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <!-- <div class="form-control" *ngIf="imagePreview !== '' && imagePreview && myForm.get('photo').valid">
+      <img [src]="imagePreview" [alt]="myForm.value.photo">
+    </div> -->
 
     <div class="form-control">
       <label for="email">Email</label>
@@ -28,9 +43,9 @@
     </div>
 
     <div class="form-control">
-      <label for="city">Ville</label>
-      <input class="" type="text" formControlName="city" id="city" value="city" required>
-      <span *ngIf="isValid('city')">Veuillez saisir votre ville</span>
+      <label for="ville">Ville</label>
+      <input class="" type="text" formControlName="ville" id="ville" value="ville" required>
+      <span *ngIf="isValid('ville')">Veuillez saisir votre ville</span>
     </div>
 
     <div class="form-control">
@@ -46,9 +61,10 @@
       <span *ngIf="isValid('experience')">Veuillez saisir votre experience</span>
     </div>
     <div class="form-control">
-      <label for="marielles">Vos matériels </label>
-      <textarea class="" formControlName="marielles" id="marielles" rows="5" value="marielles" required></textarea>
-      <span *ngIf="isValid('marielles')">Veuillez saisir le matériels que vous utilisez</span>
+      <label for="materielles">Vos matériels </label>
+      <textarea class="" formControlName="materielles" id="materielles" rows="5" value="materielles"
+        required></textarea>
+      <span *ngIf="isValid('materielles')">Veuillez saisir le matériels que vous utilisez</span>
     </div>
 
 

@@ -1,4 +1,98 @@
 /* Custom Fonts */
+.main2 {
+
+  margin: 2%;
+}
+
+.list-prestataire {
+  text-align: center;
+  font-size: 140%;
+  margin: 40px;
+
+
+}
+
+.list-user {
+  text-align: center;
+  font-size: 140%;
+  position: relative;
+  bottom: 80px;
+
+}
+
+.grid2 {
+  display: inline-block;
+  padding-bottom: 20px;
+  position: relative;
+  bottom: 90px
+}
+
+.card {
+  width: 20%;
+  display: inline-block;
+  box-shadow: 2px 2px 20px black;
+  border-radius: 5px;
+  margin: 2%;
+}
+
+.image img {
+  width: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+
+
+}
+
+.title {
+
+  text-align: center;
+  padding: 10px;
+
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.des {
+  padding: 3px;
+  text-align: center;
+
+  padding-top: 10px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+button {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 h1,
@@ -505,10 +599,12 @@ html.cssanimations .box-a {
 
 
 .grid {
-  display: flex;
+  display: inline-block;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
+  padding: 40px;
+  padding-bottom: 240px;
 }
 
 .card {

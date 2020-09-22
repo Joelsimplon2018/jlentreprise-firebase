@@ -29,9 +29,11 @@
 
       </div>
       <div class="card__actions">
-        <button (click)="onDeletePrestataire(presta.id)">Delete</button>
 
-        <a [routerLink]="['/prestataire/edit, i']">Edit</a>
+        <button (click)="onDeletePrestataire(presta.id)">Delete</button>
+        <button (click)="onEditPrestataire(presta)">Edit</button>
+
+        <!-- <a [routerLink]="['/prestataire/edit, i']" (click)="onEditPrestataire(presta)">Edit</a> -->
 
 
       </div>

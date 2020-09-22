@@ -20,5 +20,10 @@ export class AppComponent {
       measurementId: "G-TM3NNDKB7R"
     }
     firebase.initializeApp(firebaseconfig)
+
+    // admin.initializeApp({
+    //   credential: admin.credential.applicationDefault(),
+    //   databaseURL: "https://jl-entreprise.firebaseio.com"
+    // })
   }
 }

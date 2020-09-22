@@ -85,4 +85,67 @@ export class PrestatService {
         console.error(error)
       })
   }
+
+  uploadFile(file: File) {
+    return new Promise((resolve, reject) => {
+      const almostUniqueFileName = Date.now().toString()
+      const upload = firebase
+        .storage()
+        .ref()
+        .child("image/" + almostUniqueFileName + file.name)
+        .put(file)
+      upload.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        () => {
+          console.log("Chargement…")
+        },
+        error => {
+          console.log("Erreur de chargement ! : " + error)
+          reject()
+        },
+        () => {
+          resolve(upload.snapshot.ref.getDownloadURL())
+        }
+      )
+    })
+  }
+
+  // uploadFile(file: File) {
+  //   return new Promise((resolve, reject) => {
+  //     const almostUniqueFileName = Date.now().toString()
+  //     const upload = firebase
+  //       .storage()
+  //       .ref()
+  //       .child("/images/prestataires/" + almostUniqueFileName + file.name)
+  //       .put(file)
+  //     upload.on(
+  //       firebase.storage.TaskEvent.STATE_CHANGED,
+  //       () => {
+  //         console.log("Chargement…")
+  //       },
+  //       error => {
+  //         console.log("Erreur de chargement ! : " + error)
+  //         reject()
+  //       },
+  //       () => {
+  //         console.log(upload.snapshot.ref.getDownloadURL())
+  //         resolve(upload.snapshot.ref.getDownloadURL())
+  //       }
+  //     )
+  //   })
+  // }
+
+  removeFile(fileLink: string) {
+    if (fileLink) {
+      const storageRef = firebase.storage().refFromURL(fileLink)
+      storageRef
+        .delete()
+        .then(() => {
+          console.log("File deleted")
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  }
 }

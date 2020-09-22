@@ -13,6 +13,7 @@ import { FormControl, Validators, FormGroupDirective, NgForm, FormBuilder, FormG
 })
 export class PrestataireRegisterComponent implements OnInit {
   fileData: File = null
+  successMessage: string
   name = new FormControl("")
   myForm: FormGroup
   prestataires: Prestataires[] = []
@@ -64,6 +65,7 @@ export class PrestataireRegisterComponent implements OnInit {
     } else {
       this.prestatService.createPrestataire(newPrestatire)
     }
+    this.router.navigate(["/profile"])
   }
 
   isValid(controlName) {

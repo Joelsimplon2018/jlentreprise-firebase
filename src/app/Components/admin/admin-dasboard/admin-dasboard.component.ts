@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from "@angular/router"
 export class AdminDasboardComponent implements OnInit {
   prestataire
   prestataires: Prestataires[]
+  indexToRemove
 
   prestataireSubscription: Subscription
   constructor(public http: HttpClient, private ActivatedRoute: ActivatedRoute, private router: Router, private authService: AuthService, private prestatService: PrestatService) {}
@@ -31,8 +32,14 @@ export class AdminDasboardComponent implements OnInit {
   onViewPrestataire(id: number) {
     this.router.navigate(["/prestataire", id])
   }
+  // onDeleteProperty(index) {
+  //   $('#deletePropertyModal').modal('show');
+  //   this.indexToRemove = index;
+  // }
 
   ngOnDestroy() {
     this.prestataireSubscription.unsubscribe()
   }
+
+  onEditPrestataire(prestataire: Prestataires) {}
 }
